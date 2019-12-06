@@ -21,7 +21,13 @@ export class TestScoreComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
+    this.tests = await this.loadTestFromJson();
+    console.log('this.contacts asdfasdf', this.tests);
+  }
 
+  async loadTestFromJson() {
+    const tests = await this.http.get('assets/tests.json').toPromise();
+    return tests.json();
   }
 
 }
